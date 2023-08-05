@@ -83,7 +83,7 @@ function displayTemperature(response) {
 
   celsiusTemperature = response.data.main.temp;
 
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].desctiption;
   humidityElement.innerHTML = response.data.main.humidity;
