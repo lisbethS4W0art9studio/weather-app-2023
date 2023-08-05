@@ -12,10 +12,24 @@
 </head>
 
 <body>
-  <h1>
-    Weather App
-  </h1>
-  <script src="script.js"></script>
+  <div class="container">
+    <div class="weather-app-wrapper">
+      <div class="weather-app">
+        <div class="overview">
+          <h1 id="city"></h1>
+          <ul>
+            <li>Last updated: <span id="date"></span></li>
+            <li id="description"></li>
+          </ul>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="d-flex weather-temperature">
+              <img src="" alt="clear" id="icon" />
+              <div><strong id="temperature"></strong><span class="units">°C</span></div>
+            </div>
+          </div>
+          <script src="script.js"></script>
 </body>
 <footer>Coded by Lisbeth Stafferton ©2023 <em>Hosted with </em><a href="https://www.netlify.com">Netlify</a> <em><a
       href="https://github.com/lisbethS4W0art9studio/weather-app-2023">Github</a></em></footer>
