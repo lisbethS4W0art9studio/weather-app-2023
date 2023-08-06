@@ -1,0 +1,2 @@
+echo .DS_Store >> .gitignore
+'Ignoring .DS_Stores Files'
