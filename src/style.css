@@ -65,6 +65,14 @@ li::first-letter {
   top: -34px;
 }
 
+.weather-temperature .active {
+  color: #20c1bd;
+  cursor: default;
+}
+
+.weather-temperature .active:hover {
+  text-decoration: none;
+}
 .page-footer {
   flex-grow: 0;
   flex-shrink: 0;
