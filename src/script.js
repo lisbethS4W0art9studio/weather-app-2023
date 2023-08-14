@@ -46,9 +46,9 @@ function displayForecast(response) {
                 forecastDay.dt
               )}</div>
               ${index}
-              <img src="https://openweathermap.org/img/wn/${
+              <img src="https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
                 forecastDay.weather[0].icon
-              }@2x.png" alt="" width="42px" />
+              }few-clouds-night.png" alt="" width="42px" />
               <div class="weather-forecast-temperatures">
                 <span class="weather-forecast-temperature-max"> ${Math.round(
                   forecastDay.temp.max
@@ -68,9 +68,8 @@ function displayForecast(response) {
 
 function getForecast(coordinates) {
   console.log(coordinates);
-  let apiKey = "46bcab46c54344b46e2378407235d572";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?
-  lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  let key = "0ct2ee4f1df4o43e3d885ac1b0f28155";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon={lon}&lat={lat}&key={key}`;
   axios.get(`${apiUrl}`).then(displayForecast);
 }
 function displayTemperature(response) {
@@ -92,7 +91,7 @@ function displayTemperature(response) {
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/${response.data.weather[0].icon}few-clouds-night.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
@@ -100,8 +99,8 @@ function displayTemperature(response) {
 }
 
 function search(city) {
-  let apiKey = "46bcab46c54344b46e2378407235d572";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  let key = "0ct2ee4f1df4o43e3d885ac1b0f28155";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query={query}&key={key}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
 }
 
