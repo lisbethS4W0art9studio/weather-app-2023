@@ -3,6 +3,10 @@ body {
   background-color: honeydew;
 }
 
+.container {
+  top: 50px;
+  max-width: 600px;
+}
 h1 {
   color: #b9a8ff;
   font-size: 24px;
@@ -33,12 +37,15 @@ li::first-letter {
 
 .weather-app-wrapper {
   max-width: 600px;
+  max-height: fit-content;
   margin: 30px auto;
 }
 .weather-app {
   padding: 20px;
-  border: 1px solid #dadde1;
-  border-radius: 5px;
+  border: 3px solid #dadde1;
+  border-radius: 10px;
+  box-shadow: 5px;
+  color: #b9a8ff;
 }
 
 .overview {
@@ -97,6 +104,6 @@ li::first-letter {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: 600px;
   height: 90px;
 }
