@@ -1,0 +1,1 @@
+.DS_Store git add .gitignore git commit -m Ignoring .DS_Store Files
