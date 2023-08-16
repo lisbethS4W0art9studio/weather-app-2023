@@ -47,7 +47,7 @@ function displayForecast(response) {
               )}</div>
               ${index}
               <img src="https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
-                forecastDay.weather[0].icon
+                forecastDay.icon
               }few-clouds-night.png" alt="" width="42px" />
               <div class="weather-forecast-temperatures">
                 <span class="weather-forecast-temperature-max"> ${Math.round(
@@ -69,7 +69,7 @@ function displayForecast(response) {
 function getForecast(coordinates) {
   console.log(coordinates);
   let key = "0ct2ee4f1df4o43e3d885ac1b0f28155";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon={lon}&lat={lat}&key={key}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${key}`;
   axios.get(`${apiUrl}`).then(displayForecast);
 }
 function displayTemperature(response) {
@@ -80,27 +80,25 @@ function displayTemperature(response) {
   let windElement = document.querySelector("#wind");
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
-
-  let celsiusTemperature = response.data.main.temp;
+  console.log(response.data);
+  let celsiusTemperature = response.data.temperature.current;
 
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
-  cityElement.innerHTML = response.data.name;
-  descriptionElement.innerHTML = response.data.weather[0].desctiption;
-  humidityElement.innerHTML = response.data.main.humidity;
+  cityElement.innerHTML = response.data.city;
+  descriptionElement.innerHTML = response.data.condition.desctiption;
+  humidityElement.innerHTML = response.data.temperature.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed * 3.6);
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
-  iconElement.setAttribute(
-    "src",
-    `http://shecodes-assets.s3.amazonaws.com/api/weather/${response.data.weather[0].icon}few-clouds-night.png`
-  );
-  iconElement.setAttribute("alt", response.data.weather[0].description);
+  iconElement.setAttribute("src", `${response.data.condition.icon_url}`);
+  iconElement.setAttribute("alt", response.data.condition.description);
 
-  getForecast(response.data.coord);
+  getForecast(response.data.coordinates);
 }
 
 function search(city) {
   let key = "0ct2ee4f1df4o43e3d885ac1b0f28155";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query={query}&key={key}&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?
+  query=${city}&key=${key}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
 }
 
