@@ -43,18 +43,18 @@ function displayForecast(response) {
         `
       <div class="col-2">
               <div class="weather-forecast-date">${formatDay(
-                forecastDay.dt
+                forecastDay.time
               )}</div>
               ${index}
-              <img src="https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
-                forecastDay.icon
-              }few-clouds-night.png" alt="" width="42px" />
+              <img src="${
+                forecastDay.condition.icon_url
+              }" alt="" width="42px" />
               <div class="weather-forecast-temperatures">
                 <span class="weather-forecast-temperature-max"> ${Math.round(
-                  forecastDay.temp.max
+                  forecastDay.temp.maximum
                 )}° </span>
                 <span class="weather-forecast-temerature-min"> ${Math.round(
-                  forecastDay.temp.min
+                  forecastDay.temp.minimum
                 )}°</span>
               </div>
             </div>
@@ -97,8 +97,7 @@ function displayTemperature(response) {
 
 function search(city) {
   let key = "0ct2ee4f1df4o43e3d885ac1b0f28155";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?
-  query=${city}&key=${key}&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${key}&units=metric`;
   axios.get(`${apiUrl}`).then(displayTemperature);
 }
 
